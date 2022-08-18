@@ -43,10 +43,4 @@ class MealViewModel(
             mealDatabase.mealDao().upsert(meal)
         }
     }
-
-    fun deleteMeal(meal: Meal){
-        viewModelScope.launch {
-            mealDatabase.mealDao().delete(meal)
-        }
-    }
 }
