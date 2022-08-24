@@ -32,8 +32,7 @@ class MealBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMealBottomSheetBinding.inflate(inflater)
         return binding.root
