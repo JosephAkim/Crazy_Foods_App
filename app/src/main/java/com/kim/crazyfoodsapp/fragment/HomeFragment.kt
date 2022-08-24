@@ -16,6 +16,7 @@ import com.kim.crazyfoodsapp.activity.MealActivity
 import com.kim.crazyfoodsapp.adapters.CategoriesAdapter
 import com.kim.crazyfoodsapp.adapters.MostPopularAdapter
 import com.kim.crazyfoodsapp.databinding.FragmentHomeBinding
+import com.kim.crazyfoodsapp.fragment.bottomSheet.MealBottomSheetFragment
 import com.kim.crazyfoodsapp.pojo.MealsByCategory
 import com.kim.crazyfoodsapp.pojo.Meal
 import com.kim.crazyfoodsapp.viewModel.HomeViewModel
@@ -67,6 +68,15 @@ class HomeFragment : Fragment() {
         observeCategoriesLiveData()
         onCategoryClick()
 
+        onPopularItemLongClick()
+
+    }
+
+    private fun onPopularItemLongClick() {
+        popularItemsAdapter.onLongItemClick = { meal ->
+            val mealBottomSheetFragment = MealBottomSheetFragment.newInstance(meal.idMeal)
+            mealBottomSheetFragment.show(childFragmentManager, "Meal Info")
+        }
     }
 
     private fun onCategoryClick() {

@@ -9,7 +9,9 @@ import com.kim.crazyfoodsapp.pojo.MealsByCategory
 
 class MostPopularAdapter(): RecyclerView.Adapter<MostPopularAdapter.PopularMealViewHolder>() {
     lateinit var onItemClick:((MealsByCategory) -> Unit)
+    var onLongItemClick:((MealsByCategory)->Unit)?=null
     private var mealsList = ArrayList<MealsByCategory>()
+
 
     fun setMeals(mealList: ArrayList<MealsByCategory>){
         this.mealsList = mealList
@@ -27,6 +29,11 @@ class MostPopularAdapter(): RecyclerView.Adapter<MostPopularAdapter.PopularMealV
 
         holder.itemView.setOnClickListener {
             onItemClick.invoke(mealsList[position])
+        }
+
+        holder.itemView.setOnLongClickListener {
+            onLongItemClick?.invoke(mealsList[position])
+            true
         }
     }
 
