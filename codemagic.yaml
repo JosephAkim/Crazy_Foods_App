@@ -1,3 +1,10 @@
-git add codemagic.yaml
-git commit -m "Update Codemagic configuration"
-git push origin master
+workflows:
+  my-workflow:
+    scripts:
+      - name: Launch emulator
+        script: |
+          set -e # exit on first failed command
+
+          cd $ANDROID_HOME/tools
+          emulator -avd emulator &
+          adb wait-for-device
